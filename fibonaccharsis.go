@@ -8,8 +8,8 @@ import (
 
 func main() {
 	// read number of test cases
-	var numRows int
-	fmt.Scanf("%d", &numRows)
+	var numRows, k int
+	fmt.Scanf("%d %d", &numRows, &k)
 
 	numCols := 2 // Petya, Vasya, Tonya scores
 	numbers := make([][]int, numRows)
@@ -29,7 +29,9 @@ func main() {
 	// fmt.Println(Fib1, Fib2)
 	// fmt.Println(checkFibonacci(Fib1), checkFibonacci(Fib2), checkFibonacci(noFib))
 
-	generateCombinationsOfSize()
+	seq := generateNormalSequnce(1, n)
+	fmt.Println(seq)
+	//generateCombinationsOfSize()
 }
 
 func checkFibonacci(numbers []int) bool {
@@ -85,8 +87,12 @@ func generateCombinationsOfSize(nums []int, k int) [][]int {
 	return result
 }
 
-func generateNormalSequnce(nums[] int, low, high int){
-	for i:= low; i <= high; i++ {
-		nums[i] = i
+func generateNormalSequnce(low, high int) []int {
+	result := make([]int, high-low+2)
+	for i := low; i <= high; i++ {
+		result[i] = i
+	}
+
+	return result
 
 }

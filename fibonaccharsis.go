@@ -28,9 +28,16 @@ func main() {
 
 	// fmt.Println(Fib1, Fib2)
 	// fmt.Println(checkFibonacci(Fib1), checkFibonacci(Fib2), checkFibonacci(noFib))
+	// for i := 0; i < numRows; i++ {
+	// 	seq := generateNormalSequnce(2, 10)
+	// 	fmt.Println(seq)
+	// }
 
-	seq := generateNormalSequnce(1, n)
-	fmt.Println(seq)
+	// seq := generateNormalSequnce(2, 10)
+	// fmt.Println(seq)
+	seq := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	fmt.Println(generateCombinationsOfSize(seq, k))
+
 	//generateCombinationsOfSize()
 }
 

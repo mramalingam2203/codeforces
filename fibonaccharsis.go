@@ -7,30 +7,29 @@ import (
 )
 
 func main() {
-	// // read number of test cases
-	// var numRows int
-	// fmt.Scanf("%d", &numRows)
+	// read number of test cases
+	var numRows int
+	fmt.Scanf("%d", &numRows)
 
-	// numCols := 2 // Petya, Vasya, Tonya scores
-	// numbers := make([][]int, numRows)
+	numCols := 2 // Petya, Vasya, Tonya scores
+	numbers := make([][]int, numRows)
 
-	// for i := range numbers {
-	// 	numbers[i] = make([]int, numCols)
-	// }
+	for i := range numbers {
+		numbers[i] = make([]int, numCols)
+	}
 
-	// for i := 0; i < numRows; i++ {
-	// 	fmt.Scanf("%d %d", &numbers[i][0], &numbers[i][1])
-	// }
+	for i := 0; i < numRows; i++ {
+		fmt.Scanf("%d %d", &numbers[i][0], &numbers[i][1])
+	}
 
-	// fmt.Println(numbers)
+	// Fib1 := fibonacciSequence(5)
+	// Fib2 := fibonacciSequence(6)
+	// noFib := []int{6, 8, 14, 23}
 
-	Fib1 := fibonacciSequence(5)
-	Fib2 := fibonacciSequence(6)
-	noFib := []int{6, 8, 14, 23}
+	// fmt.Println(Fib1, Fib2)
+	// fmt.Println(checkFibonacci(Fib1), checkFibonacci(Fib2), checkFibonacci(noFib))
 
-	fmt.Println(Fib1, Fib2)
-	fmt.Println(checkFibonacci(Fib1), checkFibonacci(Fib2), checkFibonacci(noFib))
-
+	generateCombinationsOfSize()
 }
 
 func checkFibonacci(numbers []int) bool {
@@ -57,4 +56,37 @@ func fibonacciSequence(length int) []int {
 	}
 
 	return sequence
+}
+
+// backtrack generates all combinations of the given size (k) from the array.
+func backtrack(nums []int, start, k int, path []int, result *[][]int) {
+	if len(path) == k {
+		// Add the current combination to the result
+		combination := make([]int, len(path))
+		copy(combination, path)
+		*result = append(*result, combination)
+		return
+	}
+
+	// Backtrack to explore other combinations
+	for i := start; i < len(nums); i++ {
+		// Add the current element to the path
+		path = append(path, nums[i])
+		// Recurse with the next element
+		backtrack(nums, i+1, k, path, result)
+		// Remove the last element to backtrack
+		path = path[:len(path)-1]
+	}
+}
+
+func generateCombinationsOfSize(nums []int, k int) [][]int {
+	result := [][]int{}
+	backtrack(nums, 0, k, []int{}, &result)
+	return result
+}
+
+func generateNormalSequnce(nums[] int, low, high int){
+	for i:= low; i <= high; i++ {
+		nums[i] = i
+
 }

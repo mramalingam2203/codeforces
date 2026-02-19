@@ -12,7 +12,7 @@ import (
 )
 
 
-func independentParabolas(y1 [3]int, y2 [3]int) bool {
+func independentParabolas(y1 []int, y2 []int) bool {
 	D := (y2[1]-y1[1])*(y2[1]-y1[1])-4*(y2[0]-y1[0])*(y2[2]-y1[2]) 
 	//fmt.Println(D)
 	if  D <= 0 {
@@ -106,6 +106,17 @@ func getUniqueSubsets(parabolas[][]int) [][]int {
 	sort.Slice(subsets, func(i, j int) bool {
 		return len(subsets[i]) > len(subsets[j]) // > for descending
 	})
+
+	for index, _ := range subsets{
+		for i := 0; i < len(subsets[index]); i++{
+			for j := i+1; j < len(subsets[index]); j++{
+					independentParabolas(subsets[index][i], subsets[index][j])
+				}
+				fmt.Println()
+			}
+		}
+	
+
 
 	return subsets
 }

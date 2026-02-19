@@ -7,10 +7,11 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"strings"
 )
 
-/*
+
 func independentParabolas(y1 [3]int, y2 [3]int) bool {
 	D := (y2[1]-y1[1])*(y2[1]-y1[1])-4*(y2[0]-y1[0])*(y2[2]-y1[2]) 
 	//fmt.Println(D)
@@ -25,7 +26,7 @@ func flagInput(){
 
 }
 
-
+/*
 func main() {
 	//parabolas := [4][3]int32{{2, 2, -1}, {4, 5, 6}, {-1, 4, -5}, {1, 2, -4}}
 	
@@ -94,13 +95,19 @@ func getUniqueSubsets(parabolas[][]int) [][]int {
 	}
 
 	// Convert map values back to a slice
-	var result [][]int
+	var subsets [][]int
 	for _, subset := range subsetMap {
 		if len(subset) >= 2{
-			result = append(result, subset)
+			subsets = append(subsets, subset)
 		}
 	}
-	return result
+
+	// Sort slice of slices descending by inner length
+	sort.Slice(subsets, func(i, j int) bool {
+		return len(subsets[i]) > len(subsets[j]) // > for descending
+	})
+
+	return subsets
 }
 
 func main() {

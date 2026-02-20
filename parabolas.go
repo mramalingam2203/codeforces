@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"sort"
 	"strings"
+	"strconv"
 )
 
 
@@ -16,6 +17,8 @@ func independentParabolas(y1 []int, y2 []int) bool {
 	D := (y2[1]-y1[1])*(y2[1]-y1[1])-4*(y2[0]-y1[0])*(y2[2]-y1[2]) 
 	//fmt.Println(D)
 	if  D <= 0 {
+//		fmt.Println(y1, y2)
+
 		return true
 	}
 	return false
@@ -36,7 +39,7 @@ func checkForIndependentParabolas(idxSubsets[][]int, parabolas [][]int ){
 	for idx,_ := range idxSubsets{
 		for j := 0; j < len(idxSubsets[idx]); j++{
 			for k:=j+1; k < len(idxSubsets[idx]); k++ {
-				fmt.Println(j+1, k+1 , independentParabolas(parabolas[idxSubsets[idx][j]-1], parabolas[idxSubsets[idx][k]-1]))
+				fmt.Println(strconv.Itoa(j+1) + "-" + strconv.Itoa(k+1) , independentParabolas(parabolas[idxSubsets[idx][j]-1], parabolas[idxSubsets[idx][k]-1]))
 				//fmt.Println(idxSubsets[idx][j], idxSubsets[idx][k])
 			}
 		}

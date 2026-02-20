@@ -22,51 +22,13 @@ func independentParabolas(y1 []int, y2 []int) bool {
 }
 
 
-func flagInput(){
-
-}
-
-/*
-func main() {
-	//parabolas := [4][3]int32{{2, 2, -1}, {4, 5, 6}, {-1, 4, -5}, {1, 2, -4}}
-	
-	// parabolas := make([]int, 3, 4) // slice of length n and capacity m
-	// parabolas[0] = []{2, 2, -1}
-
-	parabolas := [4][3]int{ {1,2,-1},{-3, 0, -3}, {-1, 4, -5}, {1, 2,-4}}
-
-	fmt.Println(independentParabolas(parabolas[1], parabolas[3]))
-	fmt.Println(independentParabolas(parabolas[0], parabolas[3]))
-	
-	
-
-	for i, _ := range parabolas {
-		//count := 0
-		for j, _ := range parabolas {
-			if i != j {
-	
-				if independentParabolas(parabolas[i], parabolas[j]) == true {
-								fmt.Println(i+1, j+1)
-
-				}
-	
-			}
-
-		}
-			fmt.Println()
-	
-	}
-}
-
-*/
-
 
 
 
 func checkForIndependentParabolas(idxSubsets[][]int, parabolas [][]int ){
 	// nParabolas := len(parabolas)
 	// nIndexSubsets := len(idxSubsets)
-	
+	fmt.Println(parabolas)
 	// fmt.Println(nParabolas, nIndexSubsets)
 	
 	fmt.Println(len(idxSubsets[0]))
@@ -74,8 +36,8 @@ func checkForIndependentParabolas(idxSubsets[][]int, parabolas [][]int ){
 	for idx,_ := range idxSubsets{
 		for j := 0; j < len(idxSubsets[idx]); j++{
 			for k:=j+1; k < len(idxSubsets[idx]); k++ {
-				independentParabolas(idxSubsets[idx][j], idxSubsets[idx][k])
-				fmt.Println(idxSubsets[idx][j], idxSubsets[idx][k])
+				fmt.Println(j+1, k+1 , independentParabolas(parabolas[idxSubsets[idx][j]-1], parabolas[idxSubsets[idx][k]-1]))
+				//fmt.Println(idxSubsets[idx][j], idxSubsets[idx][k])
 			}
 		}
 		fmt.Println()

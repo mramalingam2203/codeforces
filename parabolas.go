@@ -63,7 +63,25 @@ func main() {
 
 
 
-func checkForIndependentParabolas(parabolas [][]int, idxSubsets[][]int){
+func checkForIndependentParabolas(idxSubsets[][]int, parabolas [][]int ){
+	// nParabolas := len(parabolas)
+	// nIndexSubsets := len(idxSubsets)
+	
+	// fmt.Println(nParabolas, nIndexSubsets)
+	
+	fmt.Println(len(idxSubsets[0]))
+	
+	for idx,_ := range idxSubsets{
+		for j := 0; j < len(idxSubsets[idx]); j++{
+			for k:=j+1; k < len(idxSubsets[idx]); k++ {
+				independentParabolas(idxSubsets[idx][j], idxSubsets[idx][k])
+				fmt.Println(idxSubsets[idx][j], idxSubsets[idx][k])
+			}
+		}
+		fmt.Println()
+	}
+		
+	
 
 }
 
@@ -121,7 +139,7 @@ func main() {
 	indexSubsets := getUniqueSubsets(len(parabolas))
 	checkForIndependentParabolas(indexSubsets, parabolas)
 
-	fmt.Println("Unique Subsets:", indexSubsets)
+//	fmt.Println("Unique Subsets:", indexSubsets)
 }
 
 
